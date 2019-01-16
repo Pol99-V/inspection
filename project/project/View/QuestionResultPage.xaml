@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.View.QuestionResultPage" Title="Question Result">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Go Back" Command="{Binding SubmitGoBack}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout Padding="50,0,50,0">
+                <StackLayout HeightRequest="90">
+                    <Label Text="{Binding Text_tile}" HorizontalTextAlignment="Center" FontSize="Medium" TextColor="#f44336" VerticalOptions="EndAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Spacing="3" Padding="10">
+                    <Label Text="{Binding text_yes}" HorizontalOptions="FillAndExpand"  TextColor="#f15a23">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SubmitYes}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="{Binding text_no}" HorizontalOptions="FillAndExpand"  TextColor="#f15a23">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SubmitNo}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <Entry x:Name="E_title" Text="{Binding _title}" Placeholder=""  TextColor="#f15a23"/>
+                <Editor x:Name="E_Remark" Text="{Binding _remark}" HeightRequest="120" Placeholder="Remarks" PlaceholderColor="#eb6420" TextColor="#f15a23"/>
+                <BoxView Color="Black">
+                    <BoxView.HeightRequest>
+                        <OnPlatform
+                                iOS="1"
+                                Android="0" />
+                    </BoxView.HeightRequest>
+                </BoxView>
+                <Button x:Name="b_Photo" Command="{Binding SubmitPhoto}" Text="Photo" HeightRequest="100" IsVisible="{Binding is_button}" BorderRadius = "10" BackgroundColor="White" TextColor="#f15a23"/>
+                <Image Source="{Binding m_image}" HeightRequest="100" IsVisible="{Binding is_photo}"/>
+                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Command="{Binding SubmitPrev}" Text="Previous" TextColor="White"  Margin="10"
+                    FontAttributes="Bold" FontSize="Small" HorizontalOptions="FillAndExpand"  BorderRadius="7" HeightRequest="39"
+                    BackgroundColor="#f15a23" />
+                    <Button Command="{Binding SubmitNext}" Text="Next" TextColor="White"  Margin="10"
+                    FontAttributes="Bold" FontSize="Small" HorizontalOptions="FillAndExpand" BorderRadius="7" HeightRequest="39"
+                    BackgroundColor="#f15a23" />
+                </StackLayout>
+            </StackLayout>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

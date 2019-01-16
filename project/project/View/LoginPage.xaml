@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.View.LoginPage"
+             Title="Login">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Sign Up" Command="{Binding SubmitSignup}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="7*" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1" Orientation="Vertical" Padding="50,0,50,0" Spacing="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row ="0" Grid.Column ="1" Text="Log in" TextColor="#eb6420" FontAttributes="Italic" FontSize="39" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="MarkerFelt-Thin" />
+                                <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular" />
+                                <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster" />
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                    <BoxView Grid.Row ="1" Grid.Column ="1" Color="#eb6420" />
+                </Grid>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                    <Entry x:Name="Username" Text="{Binding Username}" HorizontalOptions="FillAndExpand" Placeholder="Username" PlaceholderColor="#eb6420" TextColor="#f15a23"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name="Password" Text="{Binding Password}" IsPassword="true" HorizontalOptions="FillAndExpand" Placeholder="Password" PlaceholderColor="#eb6420" TextColor="#f15a23" />
+                </StackLayout>
+                <Button Command="{Binding SubmitLogin}" Text="Login" TextColor="White"  Margin="30,20,30,0" BorderRadius = "7"
+                    FontAttributes="Bold" FontSize="Small" HorizontalOptions="FillAndExpand" HeightRequest="39"
+                    BackgroundColor="#f15a23" />
+            </StackLayout>
+        </Grid>
+     
+    </ContentPage.Content>
+</ContentPage>

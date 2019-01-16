@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.View.FinalPage" Title="Finalise Inspection">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" Padding="50,0,50,0" VerticalOptions="Center" Margin="0">
+                    <Label Text="You can store all data in local place when wifi is not connected" TextColor="#22b14c" FontAttributes="Italic" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Editor x:Name="SignatureAuditor" Text="{Binding SignatureAudior}" Placeholder="Signature Auditor" HeightRequest="150" PlaceholderColor="#eb6420" TextColor="#f15a23"/>
+                    <BoxView Color="Black">
+                        <BoxView.HeightRequest>
+                            <OnPlatform
+                                iOS="1"
+                                Android="0" />
+                        </BoxView.HeightRequest>
+                    </BoxView>
+                    <Editor x:Name="SignatureResponsible" Text="{Binding SignatureResponsible}" Placeholder="Signature Responsible Person" HeightRequest="150" PlaceholderColor="#eb6420" TextColor="#f15a23"/>
+                    <BoxView Color="Black">
+                        <BoxView.HeightRequest>
+                            <OnPlatform
+                                iOS="1"
+                                Android="0" />
+                        </BoxView.HeightRequest>
+                    </BoxView>
+                    <Button Command="{Binding SubmitFinalise}" Text="Finalise" TextColor="White"  Margin="30,20,30,0"
+                    FontAttributes="Bold" FontSize="Small" HorizontalOptions="FillAndExpand" BorderRadius="7" HeightRequest="39"
+                    BackgroundColor="#22b14c" />
+                </StackLayout>
+                
+                <ContentView x:Name="bgLayer"
+                    BackgroundColor="#000000"
+                    IsVisible="{Binding isBusy}"
+                    Opacity="0.2" />
+                <Frame x:Name="frameLayer"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="CenterAndExpand"
+                    IsVisible="{Binding isBusy}"
+                    VerticalOptions="CenterAndExpand">
+                    <StackLayout>
+                        <ActivityIndicator x:Name="indicatorLoader"
+                            BackgroundColor="Transparent"
+                            IsRunning="{Binding isBusy}"
+                            IsVisible="{Binding isBusy}"
+                            VerticalOptions="CenterAndExpand"
+                            Color="#f15a23" />
+                        <Label HorizontalTextAlignment="Center"
+                            Text="Waiting..."
+                            TextColor="#f15a23"
+                            XAlign="Center" />
+                    </StackLayout>
+                </Frame>
+                
+            </Grid>
+        </ScrollView>
+       
+    </ContentPage.Content>
+</ContentPage>

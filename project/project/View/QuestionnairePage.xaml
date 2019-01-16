@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.View.QuestionnairePage" Title="Questionnaire">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Go Back" Command="{Binding SubmitGoBack}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        
+        <StackLayout Spacing="10">
+            <ActivityIndicator 
+                IsVisible="{Binding isBusy,Mode=TwoWay}" 
+                IsRunning="{Binding isBusy,Mode=TwoWay}" />
+            <Label Text="Loading..." IsVisible="{Binding isBusy}" HorizontalOptions="Center"/>
+            <ListView x:Name="listview" ItemsSource="{Binding _Questionnaire}" HasUnevenRows="True" Margin="0,0,0,0" SelectionMode="None"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Grid Padding="15">
+                                    <Label Text="{Binding header}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#f15a23"/>
+                                </Grid>
+                                <Grid HeightRequest="{Binding QuestionnaireRowHeightRequest}">
+                                    <ListView x:Name="listview_inside" ItemsSource="{Binding questions}" SeparatorVisibility="None" HasUnevenRows="True" SelectionMode="None" 
+                                              ItemTapped="MyList_ItemTapped" >
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Grid Padding="5">
+                                                        
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Text="{Binding Item}" FontSize="13" VerticalOptions="Center" HorizontalOptions="Start" Margin="30,0,0,0" TextColor="#34495e" Grid.Column="0"/>
+                                                        <Label Text="✔" FontSize="13" VerticalOptions="Center" Margin="0,0,10,0" TextColor="#f15a23" Grid.Column="1" IsVisible="{Binding Selected}}"/>
+                                                    </Grid>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout BackgroundColor="#fe8e00" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Button Command="{Binding SubmitNext}" Text="Go to Finalise" TextColor="#fe8e00"  
+                    FontAttributes="Bold" FontSize="Small" BorderRadius="7" HeightRequest="39"
+                    BackgroundColor="White" Margin="70,13,70,17"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
